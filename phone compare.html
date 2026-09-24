@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #1e293b;
+    background-color: #f8fafc;
+    padding: 20px;
+  }
+  .table-container {
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13.5px;
+  }
+  th {
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 14px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid #334155;
+  }
+  td {
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    vertical-align: top;
+  }
+  tr:nth-child(even) {
+    background-color: #f1f5f9;
+  }
+  .price-cell {
+    font-weight: bold;
+    color: #b91c1c;
+    text-align: center;
+    background-color: #fef2f2;
+    white-space: nowrap;
+  }
+  .highlight-row {
+    background-color: #f0fdf4 !important;
+  }
+  .device-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 4px;
+  }
+  .tag-5g { background-color: #2563eb; }
+  .tag-flagship { background-color: #7c3aed; }
+  .tag-best { background-color: #059669; }
+  
+  ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  li {
+    margin-bottom: 4px;
+  }
+  .pros-list li {
+    color: #15803d;
+  }
+  .cons-list li {
+    color: #b91c1c;
+  }
+</style>
+</head>
+<body>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 11%;">මිල (LKR)</th>
+        <th style="width: 17%;">දුරකථනය සහ කාණ්ඩය</th>
+        <th style="width: 18%;">ප්‍රධාන Specs (Display / Chip / Memory)</th>
+        <th style="width: 27%;">සියලුම වාසි (Pros)</th>
+        <th style="width: 27%;">සියලුම අවාසි (Cons)</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- BRACKET 1 -->
+      <tr class="highlight-row">
+        <td rowspan="3" class="price-cell">රු. 34,000 - 35,000</td>
+        <td>
+          <div class="device-title">Sony Xperia 10 III</div>
+          <span class="tag tag-5g">5G</span><span class="tag tag-best">Bracket Winner</span>
+        </td>
+        <td>
+          <b>Display:</b> 6.0" OLED, HDR, Gorilla Glass 6<br>
+          <b>Chip:</b> Snapdragon 690 5G (8nm)<br>
+          <b>Memory:</b> 6GB RAM | 128GB Storage<br>
+          <b>Battery:</b> 4500 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li><b>IP65/IP68 ජල හා දූවිලි ප්‍රතිරෝධය</b> (Waterproof) තිබීම.</li>
+            <li>කාණ්ඩයේ අනෙක් බොහෝ ඒවාට වඩා <b>6GB RAM</b> තිබීම.</li>
+            <li>කල්පවතින විශිෂ්ට Battery Life (4500mAh + 8nm Efficient Chip).</li>
+            <li>OLED HDR Display සහ 3.5mm Headphone Jack සහිත වීම.</li>
+            <li>MicroSD කාඩ්පත් මඟින් Storage වැඩිකර ගැනීමේ හැකියාව.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li>Display Refresh Rate එක 60Hz වලට සීමා වීම (90Hz/120Hz නැත).</li>
+            <li>Low-light (අඩු ආලෝකයේ) කැමරා ඡායාරූප සාමාන්‍ය මට්ටමක පැවතීම.</li>
+            <li>Charging Speed එක උපරිම 18W වීම (Slow Charging).</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="device-title">Google Pixel 3</div>
+          <span class="tag tag-flagship">Flagship</span>
+        </td>
+        <td>
+          <b>Display:</b> 5.5" P-OLED, HDR<br>
+          <b>Chip:</b> Snapdragon 845 (10nm Flagship)<br>
+          <b>Memory:</b> 4GB RAM | 64GB Storage<br>
+          <b>Battery:</b> 2915 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li>මිලට සාපේක්ෂව <b>ඉහළම ඡායාරූප ගුණාත්මකභාවය</b> (Flagship Grade Single Camera).</li>
+            <li>Stock Android අත්දැකීම සහ අතිශය සුමට ක්‍රියාකාරීත්වය.</li>
+            <li>Dual Front Speakers සහ Premium Glass Body.</li>
+            <li>Wireless Charging සහ IP68 Water Resistance සහාය දැක්වීම.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li><b>ඉතා කුඩා බැටරිය (2915 mAh)</b> - දින භාගයකින් පමණ බැටරි බහී.</li>
+            <li>Storage එක 64GB පමණක් වීම සහ MicroSD Card දැමිය නොහැකි වීම.</li>
+            <li>5G සහාය නොදැක්වීම (4G Only).</li>
+            <li>Headphone Jack එක නොමැති වීම.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="device-title">Samsung Galaxy A31 / A22</div>
+          <span class="tag">Budget</span>
+        </td>
+        <td>
+          <b>Display:</b> Super AMOLED (A31) / 90Hz TFT (A22)<br>
+          <b>Chip:</b> Helio P65 / Dimensity 700 5G<br>
+          <b>Memory:</b> 4GB RAM | 64GB or 128GB<br>
+          <b>Battery:</b> 5000 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li><b>5000 mAh විශාල බැටරිය</b> නිසා දවසකට වඩා පහසුවෙන් භාවිතා කළ හැකි වීම.</li>
+            <li>A31 හි Super AMOLED පැහැදිලි තිරය / A22 හි 90Hz සුමට Refresh Rate එක.</li>
+            <li>Dedicated MicroSD Card Slot එකක් තිබීම.</li>
+            <li>ලංකාවේ අමතර කොටස් (Spare Parts) බහුලව සහ ලාභදායීව සොයාගත හැකි වීම.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li>Processors (Helio P65/Dimensity 700) සාමාන්‍ය මට්ටමේ වීම (Heavy Gaming වලට නුසුදුසුයි).</li>
+            <li>Full Plastic Body එකක් සහිත වීම නිසා Premium පෙනුමක් නොමැති වීම.</li>
+            <li>Camera වල Night Mode සහ Video Stabilization දුර්වල වීම.</li>
+          </ul>
+        </td>
+      </tr>
+
+      <!-- BRACKET 2 -->
+      <tr class="highlight-row">
+        <td rowspan="3" class="price-cell">රු. 36,000 - 37,000</td>
+        <td>
+          <div class="device-title">Sony Xperia 1 / Xperia 5</div>
+          <span class="tag tag-flagship">Flagship</span><span class="tag tag-best">Performance Winner</span>
+        </td>
+        <td>
+          <b>Display:</b> 4K OLED (X1) / FHD+ 120Hz OLED (X5)<br>
+          <b>Chip:</b> Snapdragon 855 (7nm Flagship)<br>
+          <b>Memory:</b> 6GB RAM | 64GB Storage<br>
+          <b>Battery:</b> 3140 - 3330 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li><b>Snapdragon 855 Flagship Processor</b> එක නිසා Gaming සහ Performance අතිවිශිෂ්ට වීම.</li>
+            <li>ලොව ප්‍රථම 4K HDR OLED (X1) / CinemaWide 120Hz OLED (X5) සුපිරි තිරය.</li>
+            <li>Gorilla Glass 6 + Aluminum Frame සහිත සැබෑ Premium නිමාව.</li>
+            <li>Triple Camera System (Ultra-wide, Telephoto ඇතුළුව).</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li>බැටරි ධාරිතාව (3140-3330 mAh) සාපේක්ෂව අඩු මට්ටමක පැවතීම.</li>
+            <li>4K/120Hz නිසා Display එකෙන් Battery පරිභෝජනය වැඩි වීම.</li>
+            <li>Storage එක 64GB වීම (නමුත් SD Card සහාය දක්වයි).</li>
+            <li>5G සහාය නොදැක්වීම.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="device-title">LG Q92 5G</div>
+          <span class="tag tag-5g">5G</span>
+        </td>
+        <td>
+          <b>Display:</b> 6.67" IPS LCD, FHD+<br>
+          <b>Chip:</b> Snapdragon 765G 5G (7nm)<br>
+          <b>Memory:</b> 6GB RAM | 128GB Storage<br>
+          <b>Battery:</b> 4000 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li><b>128GB විශාල Storage</b> සහ 6GB RAM සහිත වීම.</li>
+            <li>Snapdragon 765G චිප්සෙට් එක නිසා මධ්‍යස්ථ Gaming සහ 5G Performance හොඳින් ලැබීම.</li>
+            <li>MIL-STD-810G හමුදා මට්ටමේ කල්පැවැත්ම (Shock Resistance).</li>
+            <li>Stereo Speakers සහ 3.5mm Jack සහිත වීම.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li>OLED වෙනුවට සාමාන්‍ය <b>IPS LCD තිරයක්</b> පමණක් තිබීම.</li>
+            <li>LG සමාගම Mobile අංශය වසා දමා ඇති බැවින් ඉදිරි Software Updates නොලැබීම.</li>
+            <li>ලංකාව තුළ Display හෝ Parts සොයාගැනීම තරමක් අපහසු වීම.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="device-title">Samsung Galaxy S8 / S8+</div>
+          <span class="tag tag-flagship">Old Flagship</span>
+        </td>
+        <td>
+          <b>Display:</b> 5.8" / 6.2" Curved Super AMOLED (2K 1440p)<br>
+          <b>Chip:</b> Exynos 8895 / SD 835<br>
+          <b>Memory:</b> 4GB RAM | 64GB Storage<br>
+          <b>Battery:</b> 3000 - 3500 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li>අලංකාර 2K Curved Super AMOLED Display එක.</li>
+            <li>Iris Scanner, Heart Rate Monitor වැනි අමතර Sensors තිබීම.</li>
+            <li>Wireless Charging සහ IP68 Water Resistance සහිත වීම.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li><b>2017 වසරේ දුරකථනයක් බැවින් ඉතා පැරණියි</b> (Android 9 න් Updates නතර වී ඇත).</li>
+            <li>AMOLED Screen Burn-in ගැටලුව ඇතිවීමේ වැඩි සම්භාවිතාව.</li>
+            <li>බැටරි ආයු කාලය අද පවතින Apps සඳහා ප්‍රමාණවත් නොවීම.</li>
+          </ul>
+        </td>
+      </tr>
+
+      <!-- BRACKET 3 -->
+      <tr class="highlight-row">
+        <td rowspan="4" class="price-cell">රු. 38,000 - 40,000</td>
+        <td>
+          <div class="device-title">Sony Xperia 10 IV</div>
+          <span class="tag tag-5g">5G</span><span class="tag tag-best">Overall Best Choice</span>
+        </td>
+        <td>
+          <b>Display:</b> 6.0" OLED, Triluminos (Victus Glass)<br>
+          <b>Chip:</b> Snapdragon 695 5G (6nm)<br>
+          <b>Memory:</b> 6GB RAM | 128GB Storage<br>
+          <b>Battery:</b> 5000 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li><b>ඉතා නූතන මාදිලියක් වීම (2022 නිකුත් වූ)</b> - දිගුකල් පැවැත්ම සහ යාවත්කාලීන බව.</li>
+            <li><b>දින 2ක් පවතින අතිශය බලවත් Battery Life</b> (5000 mAh + 6nm High Efficiency Chip).</li>
+            <li>Gorilla Glass Victus ආරක්ෂාව සහ IP65/IP68 Water Resistance.</li>
+            <li>Lightweight (161g) සැහැල්ලු සහ අතට පහසු Compact නිමාව.</li>
+            <li>OIS (Optical Image Stabilization) සහිත Triple Camera Setup.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li>Refresh Rate එක 60Hz වීම (Smoothness අඩුයි).</li>
+            <li>Mono Speaker එකක් පමණක් තිබීම (Stereo Sound නැත).</li>
+            <li>Charging Speed එක උපරිම 21W වීම.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="device-title">LG V50 / V50s ThinQ</div>
+          <span class="tag tag-flagship">Flagship</span><span class="tag tag-best">Value/Hardware Winner</span>
+        </td>
+        <td>
+          <b>Display:</b> 6.4" 2K OLED (1440p) / FHD+ OLED<br>
+          <b>Chip:</b> Snapdragon 855 5G (7nm)<br>
+          <b>Memory:</b> 6GB/8GB RAM | 128GB/256GB Storage<br>
+          <b>Battery:</b> 4000 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li>මෙම මිලට ලැබෙන <b>ඉහළම Storage එක (256GB) සහ RAM (8GB)</b>.</li>
+            <li><b>Hi-Fi Quad DAC Audio Chip</b> - Wired Earphones සඳහා ලොව හොඳම Sound Quality එක.</li>
+            <li>Snapdragon 855 Flagship Processor එක නිසා High-end Gaming සඳහා සුදුසු වීම.</li>
+            <li>2K OLED තිරය, Wireless Charging සහ IP68 Water Resistance.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li>LG Mobile වසා දමා ඇති බැවින් Security/OS Updates අවසන් වීම.</li>
+            <li>Parts (විශේෂයෙන් Display සහ Battery) ලංකාවේ හිඟ වීම.</li>
+            <li>Fingerprint Scanner එක සාපේක්ෂව මන්දගාමී වීම.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="device-title">Google Pixel 3 XL</div>
+          <span class="tag tag-flagship">Flagship</span>
+        </td>
+        <td>
+          <b>Display:</b> 6.3" P-OLED, QHD+ (1440p)<br>
+          <b>Chip:</b> Snapdragon 845 (10nm)<br>
+          <b>Memory:</b> 4GB RAM | 64GB Storage<br>
+          <b>Battery:</b> 3430 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li>පැහැදිලි 2K (QHD+) තිරය සහ අතිවිශිෂ්ට Flagship Camera එක.</li>
+            <li>Dual Selfie Cameras (Group Selfies සඳහා Wide-angle සහිත).</li>
+            <li>ඉදිරිපස Dual Stereo Speakers වල විශිෂ්ට ශබ්දය.</li>
+            <li>Pixel 3 ට වඩා හොඳ Battery Life එකක් තිබීම.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li>ඉහළින් ඇති <b>විශාල Notch එක</b> නිසා Display එකේ පෙනුම බාධාකාරී වීම.</li>
+            <li>4GB RAM / 64GB Storage වලට සීමා වීම (SD Card සහාය නැත).</li>
+            <li>5G සහාය නොදැක්වීම.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="device-title">Samsung Galaxy A32 / A23</div>
+          <span class="tag">Budget</span>
+        </td>
+        <td>
+          <b>Display:</b> 90Hz Super AMOLED (A32) / 90Hz LCD (A23)<br>
+          <b>Chip:</b> Helio G80 / Snapdragon 680<br>
+          <b>Memory:</b> 4GB/6GB RAM | 128GB Storage<br>
+          <b>Battery:</b> 5000 mAh
+        </td>
+        <td>
+          <ul class="pros-list">
+            <li>90Hz Smooth Display සහ 5000 mAh විශාල බැටරිය.</li>
+            <li>Samsung One UI පරිශීලක අතුරුමුහුණත සහ වැඩි කාලයක් ආරක්ෂිත භාවිතය.</li>
+            <li>ලංකාවේ ඕනෑම තැනකින් පහසුවෙන් Repair කරගැනීමේ සහ Parts ගැනීමේ හැකියාව.</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="cons-list">
+            <li>Flagship චිප්සෙට් (SD845/855) සමඟ සසඳන විට Processing Speed එක සහ Gaming ඉතා දුර්වල වීම.</li>
+            <li>Plastic Frame සහ Plastic Back සහිත සාමාන්‍ය පෙනුම.</li>
+          </ul>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
