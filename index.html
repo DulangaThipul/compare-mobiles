@@ -3,356 +3,390 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smartphone Comparison (30k - 40k LKR)</title>
+<title>Mobile Comparison & Reddit User Reviews (LKR 30,000 - 40,000)</title>
 <style>
   :root {
-    --primary: #0f172a;
-    --accent: #dc2626;
-    --bg-card: #ffffff;
-    --bg-subtle: #f8fafc;
-    --border: #e2e8f0;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
-    --tag-best: #16a34a;
-    --tag-warn: #ea580c;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-blue: #38bdf8;
+    --accent-green: #4ade80;
+    --accent-red: #f87171;
+    --accent-purple: #c084fc;
+    --badge-gold: #f59e0b;
   }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #f1f5f9;
+    background-color: var(--bg);
     color: var(--text-main);
-    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     padding: 12px;
     line-height: 1.5;
   }
-
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
   h1 {
     font-size: 1.25rem;
     text-align: center;
-    color: var(--primary);
-    margin-bottom: 8px;
+    margin: 10px 0 4px;
+    color: #fff;
   }
-
-  p.intro {
+  .sub-title {
     font-size: 0.85rem;
     text-align: center;
     color: var(--text-muted);
     margin-bottom: 20px;
   }
-
-  /* Card Styles - Optimized for Mobile */
-  .device-card {
-    background: var(--bg-card);
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    margin-bottom: 16px;
-    padding: 16px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
   }
-
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .card.featured {
+    border: 2px solid var(--accent-blue);
+  }
+  .card.featured::after {
+    content: "OVERALL TOP PICK";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent-blue);
+    color: #0f172a;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-bottom-left-radius: 10px;
+    letter-spacing: 0.5px;
+  }
   .card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 10px;
     margin-bottom: 12px;
   }
-
-  .model-title {
-    font-size: 1.1rem;
+  .phone-title {
+    font-size: 1.15rem;
     font-weight: 700;
-    color: var(--primary);
-    margin: 0;
+    color: #fff;
   }
-
   .price-tag {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: var(--accent);
-    background: #fee2e2;
-    padding: 3px 8px;
+    color: var(--accent-green);
+    background: rgba(74, 222, 128, 0.1);
+    padding: 4px 8px;
     border-radius: 6px;
   }
-
-  .specs-badge-row {
+  .badges {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
     margin-bottom: 12px;
   }
-
   .badge {
-    font-size: 0.75rem;
-    padding: 3px 8px;
+    font-size: 0.72rem;
+    padding: 2px 8px;
     border-radius: 4px;
     font-weight: 600;
   }
-  .b-soc { background: #e0f2fe; color: #0369a1; }
-  .b-mem { background: #f3e8ff; color: #7e22ce; }
-  .b-best { background: #dcfce7; color: var(--tag-best); }
+  .b-5g { background: #1e40af; color: #bfdbfe; }
+  .b-flag { background: #581c87; color: #e9d5ff; }
+  .b-spec { background: #334155; color: #cbd5e1; }
+  
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+  }
+  .spec-item span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+  }
+  .spec-item strong {
+    color: #f1f5f9;
+  }
 
   .section-label {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     margin-top: 10px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     gap: 5px;
   }
+  .sec-pro { color: var(--accent-green); }
+  .sec-con { color: var(--accent-red); }
+  .sec-reddit { color: #f97316; }
 
-  .pros-label { color: #16a34a; }
-  .cons-label { color: #b91c1c; }
-  .reddit-label { color: #ea580c; }
-
-  ul.detail-list {
-    margin: 0 0 10px 0;
-    padding-left: 18px;
+  ul.info-list {
+    list-style: none;
     font-size: 0.82rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
-
-  ul.detail-list li {
-    margin-bottom: 4px;
+  ul.info-list li {
+    position: relative;
+    padding-left: 14px;
+    line-height: 1.4;
   }
-
-  .reddit-box {
-    background: #fff7ed;
-    border-left: 3px solid var(--tag-warn);
-    padding: 8px 12px;
+  ul.info-list li::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .list-pro li::before { content: "✔"; color: var(--accent-green); font-size: 0.75rem; }
+  .list-con li::before { content: "✖"; color: var(--accent-red); font-size: 0.75rem; }
+  .list-reddit li {
+    background: rgba(249, 115, 22, 0.08);
+    border-left: 2px solid #f97316;
+    padding: 6px 10px;
     border-radius: 0 6px 6px 0;
-    margin-top: 8px;
-    font-size: 0.8rem;
-    color: #7c2d12;
+    margin-bottom: 4px;
+    font-size: 0.78rem;
   }
-
-  .reddit-box strong {
-    display: block;
-    margin-bottom: 3px;
-  }
-
-  /* Quick Summary Verdict */
-  .verdict-box {
-    background: #0f172a;
-    color: #fff;
-    padding: 16px;
-    border-radius: 12px;
-    margin-top: 25px;
-    font-size: 0.85rem;
-  }
-
-  .verdict-box h2 {
-    color: #38bdf8;
-    font-size: 1rem;
-    margin-top: 0;
-  }
+  .list-reddit li::before { content: ""; }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>📱 30,000 - 40,000 LKR Phones: Detailed Versus & Complaints</h1>
-  <p class="intro">වාසි, අවාසි සහ Reddit Users ලාගේ සැබෑ අත්දැකීම් (Bugs & Issues) සහිත සම්පූර්ණ විග්‍රහය.</p>
+<h1>📱 KingsMobile Price vs Performance</h1>
+<p class="sub-title">රු. 30,000 - 40,000 පරාසයේ සැබෑ Performance සහ Reddit User Reviews</p>
 
-  <!-- DEVICE 1: SONY XPERIA 10 IV -->
-  <div class="device-card" style="border: 2px solid #16a34a;">
+<div class="grid-container">
+
+  <!-- CARD 1: Sony Xperia 10 IV -->
+  <div class="card featured">
     <div class="card-header">
       <div>
-        <h2 class="model-title">Sony Xperia 10 IV</h2>
-        <span class="badge b-best">★ Overall Best (Daily Use & Battery)</span>
+        <div class="phone-title">Sony Xperia 10 IV</div>
+        <div class="badges">
+          <span class="badge b-5g">5G Network</span>
+          <span class="badge b-spec">2022 Mid-Range</span>
+          <span class="badge b-spec">Dual SIM (eSIM)</span>
+        </div>
       </div>
-      <span class="price-tag">රු. 38,000 / 36,000</span>
+      <div class="price-tag">රු. 38,000</div>
     </div>
-    <div class="specs-badge-row">
-      <span class="badge b-soc">Snapdragon 695 (6nm) 5G</span>
-      <span class="badge b-mem">6GB RAM | 128GB ROM</span>
-      <span class="badge">6.0" OLED (60Hz)</span>
-      <span class="badge">5000 mAh Battery</span>
+    
+    <div class="specs-grid">
+      <div class="spec-item"><span>Processor</span><strong>Snapdragon 695 5G (6nm)</strong></div>
+      <div class="spec-item"><span>Memory</span><strong>6GB RAM / 128GB ROM</strong></div>
+      <div class="spec-item"><span>Display</span><strong>6.0" OLED (Gorilla Victus)</strong></div>
+      <div class="spec-item"><span>Battery</span><strong>5000 mAh (161h Endurance)</strong></div>
     </div>
 
-    <div class="section-label pros-label">✔ වාසි (Fully Detailed)</div>
-    <ul class="detail-list">
-      <li><strong>ඉහළම බැටරි ආයු කාලය:</strong> 5000mAh බැටරිය සහ බලශක්ති කාර්යක්ෂම 6nm චිප්සෙට් එක නිසා සාමාන්‍ය භාවිතයේදී දින 2ක් පහසුවෙන්ම පාවිච්චි කළ හැක.</li>
-      <li><strong>නවීන බව සහ කල්පැවැත්ම:</strong> 2022 මාදිලියක් බැවින් Android 13/14 සහය, IP65/IP68 Water & Dust Resistance සහ Gorilla Glass Victus ඉදිරිපස ආරක්ෂාව ඇත.</li>
-      <li><strong>Compact & Light:</strong> ග්‍රෑම් 161ක් තරම් සැහැල්ලුය; තනි අතින් හැසිරවීම ඉතාම පහසුය. 3.5mm Headphone Jack සහ MicroSD Slot එකක් ද ඇත.</li>
+    <div class="section-label sec-pro">🟢 ප්‍රධාන වාසි (Pros)</div>
+    <ul class="info-list list-pro">
+      <li><strong>විශිෂ්ට Battery Life:</strong> 5000mAh බැටරිය සහ 6nm චිප්සෙට් එක නිසා දින 2ක් පහසුවෙන් චාජ් නොකර භාවිත කළ හැක.</li>
+      <li><strong>IP65/IP68 Water Resistance:</strong> ජලයට සහ දූවිල්ලට පූර්ණ ආරක්ෂාව ඇත.</li>
+      <li><strong>Compact & Premium:</strong> බර ග්‍රෑම් 161ක් පමණක් වන අතට පහසු සිහින් (21:9) නිමාව.</li>
+      <li>3.5mm Headphone Jack එක සහ MicroSD Card පහසුකම පවතී.</li>
     </ul>
 
-    <div class="section-label cons-label">✖ අවාසි</div>
-    <ul class="detail-list">
-      <li><strong>60Hz Screen:</strong> මේ මිලේ අනෙක් සමහර මාදිලි 90Hz/120Hz දෙන විට මෙහි ඇත්තේ 60Hz Display එකක් පමණි.</li>
-      <li><strong>Camera Slow / Shutter Lag:</strong> අඩු ආලෝකයේදී ඡායාරූප සැකසීමට (processing) වැඩි කාලයක් ගතවේ.</li>
-      <li><strong>Slow Charging:</strong> 5000mAh බැටරිය සම්පූර්ණයෙන් චාර්ජ් වීමට පැය 2කට ආසන්න කාලයක් ගතවේ.</li>
+    <div class="section-label sec-con">🔴 ප්‍රධාන අවාසි (Cons)</div>
+    <ul class="info-list list-con">
+      <li>Display එක <strong>60Hz refresh rate</strong> වලට පමණක් සීමා වේ (90Hz/120Hz නැත).</li>
+      <li>Stereo Speakers නැත (Mono single speaker පමණි).</li>
+      <li>Charging වේගය අඩුය (21W උපරිම).</li>
     </ul>
 
-    <div class="reddit-box">
-      <strong>⚠️ Reddit Users Complaints (r/SonyXperia):</strong>
-      • <em>Aggressive RAM Management:</em> ඇප්ස් කිහිපයක් විවෘත කළ විට පසුබිමේ ඇති ඇප්ස් auto-kill වී නැවත මුල සිට load වීමේ ප්‍රවණතාවක් ඇත.<br>
-      • <em>Green Tint / Black Crush:</em> අඩු Brightness (below 80%) මට්ටම් වලදී තිරය කොළ පැහැ ගැන්වීමේ (Green tint) ගැටලුවක් ඇතැම් units වල වාර්තා වේ.<br>
-      • <em>Speaker Quality:</em> Single speaker එකක් පමණක් ඇති අතර Call එක Loudspeaker දැමූ විට අනෙක් පාර්ශ්වයට තමන්ගේම කටහඬ Echo වන බවට complaints ඇත.
-    </div>
+    <div class="section-label sec-reddit">💬 Reddit User Complaints (r/SonyXperia)</div>
+    <ul class="info-list list-reddit">
+      <li><strong>Slow Camera App:</strong> අඩු ආලෝකයේදී Camera shutter එක ප්‍රමාද වීම සහ Night Mode ඡායාරූප සැකසීමට කාලය ගැනීම.</li>
+      <li><strong>Double Tap to Wake නැතිකම:</strong> සමහර users ලා screen එක on කරගැනීමට power button එකම එබීමට සිදුවීම ගැටලුවක් ලෙස දක්වයි.</li>
+      <li><strong>60Hz Display:</strong> 2022 වසරේ දුරකථනයක් වුවත් 120Hz scrolling smooth බව නොමැති වීම.</li>
+    </ul>
   </div>
 
-  <!-- DEVICE 2: LG V50s / V50 ThinQ -->
-  <div class="device-card" style="border: 2px solid #7c3aed;">
+  <!-- CARD 2: LG V50s / V50 ThinQ -->
+  <div class="card">
     <div class="card-header">
       <div>
-        <h2 class="model-title">LG V50s / V50 ThinQ</h2>
-        <span class="badge" style="background:#f3e8ff; color:#7e22ce;">★ Best Performance & Storage</span>
+        <div class="phone-title">LG V50s / V50 ThinQ</div>
+        <div class="badges">
+          <span class="badge b-flag">Flagship</span>
+          <span class="badge b-5g">5G Network</span>
+          <span class="badge b-spec">Hi-Fi Quad DAC</span>
+        </div>
       </div>
-      <span class="price-tag">රු. 38,000 / 36,000</span>
+      <div class="price-tag">රු. 38,000</div>
     </div>
-    <div class="specs-badge-row">
-      <span class="badge b-soc">Snapdragon 855 (Flagship)</span>
-      <span class="badge b-mem">8GB/6GB RAM | 256GB ROM</span>
-      <span class="badge">OLED (2K / FHD+)</span>
-      <span class="badge">4000 mAh (5G)</span>
+    
+    <div class="specs-grid">
+      <div class="spec-item"><span>Processor</span><strong>Snapdragon 855 (7nm Flagship)</strong></div>
+      <div class="spec-item"><span>Memory</span><strong>8GB RAM / 256GB ROM</strong></div>
+      <div class="spec-item"><span>Display</span><strong>6.4" OLED (HDR10)</strong></div>
+      <div class="spec-item"><span>Battery</span><strong>4000 mAh (Wireless Chg)</strong></div>
     </div>
 
-    <div class="section-label pros-label">✔ වාසි (Fully Detailed)</div>
-    <ul class="detail-list">
-      <li><strong>අසමසම Storage & RAM:</strong> රු. 38,000කට 256GB Storage සහ 8GB RAM (V50s) ලැබෙන එකම විකල්පයයි. Heavy Gaming වලට වඩාත් සුදුසුය.</li>
-      <li><strong>Flagship Display & Audio:</strong> V50 හි 1440p (2K) OLED තිරයක් ද, 32-bit Hi-Fi Quad DAC (Wired Headphone ශබ්ද ගුණාත්මකතාව උපරිමයි) ද ඇත.</li>
-      <li><strong>Dual Screen සහය:</strong> රැහැන් රහිත චාර්ජිං (Wireless charging) සහ Dual-screen case සහය සහිත Flagship build එකක් ඇත.</li>
+    <div class="section-label sec-pro">🟢 ප්‍රධාන වාසි (Pros)</div>
+    <ul class="info-list list-pro">
+      <li><strong>ඉහළම Storage & RAM:</strong> මේ මිලට ලැබෙන එකම <strong>8GB RAM / 256GB ROM</strong> සහිත Flagship උපකරණයයි.</li>
+      <li><strong>Flagship Performance:</strong> Snapdragon 855 නිසා PUBG, Free Fire වැනි Games ඉතා smooth ලෙස ධාවනය කළ හැක.</li>
+      <li><strong>Studio Quality Audio:</strong> 32-bit Hi-Fi Quad DAC මඟින් සුවිශේෂී wired headphone ශබ්ද අත්දැකීමක් ලබාදේ.</li>
+      <li>Wireless Charging පහසුකම පවතී.</li>
     </ul>
 
-    <div class="section-label cons-label">✖ අවාසි</div>
-    <ul class="detail-list">
-      <li><strong>LG ව්‍යාපාරය නැවැත්වීම:</strong> මෘදුකාංග යාවත්කාලීන (Security Updates) තවදුරටත් නොලැබේ (Android 11/12 වලින් අවසන්).</li>
-      <li><strong>Hardware Repairs හිඟකම:</strong> තිරය හෝ වෙනත් කොටස් කැඩුණහොත් ලංකාවේ අමතර කොටස් සොයාගැනීම අපහසුය.</li>
+    <div class="section-label sec-con">🔴 ප්‍රධාන අවාසි (Cons)</div>
+    <ul class="info-list list-con">
+      <li>LG සමාගම දුරකථන නිෂ්පාදනය නතර කර ඇති බැවින් <strong>අනාගත OS Updates නොලැබේ</strong> (Android 12 අවසන්).</li>
+      <li>ලංකාවේ අමතර කොටස් (Display/Battery) සොයාගැනීම තරමක් අපහසුය.</li>
+      <li>2019 මාදිලියක් බැවින් Used device එකේ බැටරි ධාරිතාව පරික්ෂා කළ යුතුය.</li>
     </ul>
 
-    <div class="reddit-box">
-      <strong>⚠️ Reddit Users Complaints (r/lgv50):</strong>
-      • <em>Motherboard Heat / Sudden Shutdowns:</em> Refurbished/Used ඒකක වල Cooling pad දිරාපත්වීම නිසා Wi-Fi/Data දමා heavy tasks කරන විට device එක දැඩි ලෙස රත්වී auto shut-down වන අවස්ථා වාර්තා වී ඇත.<br>
-      • <em>VoLTE Configuration:</em> ලංකාවේ Dialog, Mobitel ජාල වල ඇතැම් Korean versions සඳහා VoLTE සක්‍රිය කිරීමට Hidden engineering menu එකෙන් manual settings හදන්නට සිදුවේ.<br>
-      • <em>USB-C Port Wear:</em> කාලයක් භාවිත කළ දුරකථන වල Type-C port එක loose වීම හෝ Moisture detected error පෙන්වීම.
-    </div>
+    <div class="section-label sec-reddit">💬 Reddit User Complaints (r/lgv50)</div>
+    <ul class="info-list list-reddit">
+      <li><strong>VoLTE Carrier Issues:</strong> ලංකාවේ සමහර networks වල VoLTE සක්‍රිය කර ගැනීමට hidden menu එකෙන් manual settings හදන්නට සිදුවීම.</li>
+      <li><strong>Korean Bloatware:</strong> Korean variants වල default korean apps සහ shutter sound එක mute කිරීමට අපහසු වීම.</li>
+      <li><strong>Thermal Throttling:</strong> අධික ලෙස දිගු වේලාවක් game ගසන විට processor එක රත්වී frame drops ඇතිවීම.</li>
+    </ul>
   </div>
 
-  <!-- DEVICE 3: SONY XPERIA 1 & XPERIA 5 -->
-  <div class="device-card">
+  <!-- CARD 3: Sony Xperia 1 / Xperia 5 -->
+  <div class="card">
     <div class="card-header">
       <div>
-        <h2 class="model-title">Sony Xperia 1 / Xperia 5</h2>
-        <span class="badge" style="background:#e0e7ff; color:#3730a3;">Cinematic Flagship</span>
+        <div class="phone-title">Sony Xperia 1 / Xperia 5</div>
+        <div class="badges">
+          <span class="badge b-flag">Flagship</span>
+          <span class="badge b-spec">4K / 120Hz OLED</span>
+          <span class="badge b-spec">CinemaWide</span>
+        </div>
       </div>
-      <span class="price-tag">රු. 37,000 / 35,000</span>
+      <div class="price-tag">රු. 37,000</div>
     </div>
-    <div class="specs-badge-row">
-      <span class="badge b-soc">Snapdragon 855</span>
-      <span class="badge b-mem">6GB RAM | 64GB ROM</span>
-      <span class="badge">4K HDR (X1) / FHD+ (X5)</span>
-      <span class="badge">3140 - 3330 mAh</span>
+    
+    <div class="specs-grid">
+      <div class="spec-item"><span>Processor</span><strong>Snapdragon 855 (7nm)</strong></div>
+      <div class="spec-item"><span>Memory</span><strong>6GB RAM / 64GB ROM</strong></div>
+      <div class="spec-item"><span>Display</span><strong>4K OLED (X1) / FHD+ (X5)</strong></div>
+      <div class="spec-item"><span>Battery</span><strong>3140 - 3330 mAh</strong></div>
     </div>
 
-    <div class="section-label pros-label">✔ වාසි (Fully Detailed)</div>
-    <ul class="detail-list">
-      <li><strong>ඉහළම මට්ටමේ තිරය:</strong> Xperia 1 හි ලොව පළමු 4K CinemaWide 21:9 OLED තිරය ඇත. චිත්‍රපට නැරඹීමට උපරිම තෘප්තියක් ලැබේ.</li>
-      <li><strong>Premium Build:</strong> ලෝහ සහ වීදුරු (Gorilla Glass 6) නිමාව, Stereo Speakers, සහ Flagship කැමරා (Triple 12MP lenses with Eye AF).</li>
-      <li><strong>Smooth Gaming:</strong> Snapdragon 855 නිසා PUBG, Free Fire වැනි ක්‍රීඩා ඉතා සුමටව ක්‍රියාත්මක වේ.</li>
+    <div class="section-label sec-pro">🟢 ප්‍රධාන වාසි (Pros)</div>
+    <ul class="info-list list-pro">
+      <li><strong>ලොව හොඳම Display එකක්:</strong> Xperia 1 හි ලොව ප්‍රථම 4K HDR OLED (21:9) තිරය පවතී.</li>
+      <li>Triple 12MP Pro Cameras (Wide, Telephoto, Ultrawide) සමඟ Eye-AF තාක්ෂණය.</li>
+      <li>ඉතාම ප්‍රිමියම් Glass & Metal Flagship නිමාව.</li>
     </ul>
 
-    <div class="section-label cons-label">✖ අවාසි</div>
-    <ul class="detail-list">
-      <li><strong>දුර්වල බැටරිය:</strong> 4K තිරයකට 3300mAh බැටරියක් නොසෑහේ. දිනකට දෙවරක් චාර්ජ් කිරීමට සිදුවේ.</li>
-      <li><strong>64GB Storage පමණි:</strong> System එකට 20GB පමණ ගිය පසු ඉතිරි වන්නේ සුළු ඉඩකි (MicroSD දැමිය යුතුය).</li>
+    <div class="section-label sec-con">🔴 ප්‍රධාන අවාසි (Cons)</div>
+    <ul class="info-list list-con">
+      <li><strong>දුර්වල Battery Life:</strong> 4K තිරය නිසා 3330mAh බැටරිය ඉක්මනින් බැස යයි (දිනකට දෙවරක් චාජ් කිරීමට සිදුවිය හැක).</li>
+      <li>Internal Storage එක 64GB පමණි (Cards දැමිය හැකි වුවද apps සඳහා සීමිතයි).</li>
+      <li>3.5mm Headphone Jack එකක් නොමැත.</li>
     </ul>
 
-    <div class="reddit-box">
-      <strong>⚠️ Reddit Users Complaints (r/SonyXperia):</strong>
-      • <em>Green Line on Screen:</em> විශේෂයෙන්ම Xperia 5 මාදිලි වල Display එක හරහා සිරස්ව කොළ හෝ රෝස පැහැති ඉරි (Vertical Green Lines) මතුවීමේ දෝෂය Reddit හි බහුලවම පැමිණිලි කර ඇත.<br>
-      • <em>Fingerprint Sensor Failure:</em> පැති බැම්මේ ඇති Fingerprint scanner එක මාස කිහිපයකින් ක්‍රියාවිරහිත වීම (hardware dying) Xperia 1/5 වල ප්‍රසිද්ධ ලෙඩකි.<br>
-      • <em>Overheating during 4K:</em> 4K වීඩියෝ රෙකෝඩ් කිරීමේදී විනාඩි කිහිපයකින් Camera app එක crash වීම හෝ රත්වීම.
-    </div>
+    <div class="section-label sec-reddit">💬 Reddit User Complaints (r/SonyXperia)</div>
+    <ul class="info-list list-reddit">
+      <li><strong>Fingerprint Sensor Failure:</strong> කාලයක් පාවිච්චි කරද්දී පැත්තේ ඇති fingerprint scanner එක වැඩ නොකර disable වීම ප්‍රධාන පැමිණිල්ලකි.</li>
+      <li><strong>Low Battery Endurance:</strong> 4K screen එක නිසා Screen-on-time (SOT) පැය 3.5 - 4 කට වඩා ලබාගැනීමට අපහසු වීම.</li>
+    </ul>
   </div>
 
-  <!-- DEVICE 4: GOOGLE PIXEL 3 XL / 3 -->
-  <div class="device-card">
+  <!-- CARD 4: Google Pixel 3 XL -->
+  <div class="card">
     <div class="card-header">
       <div>
-        <h2 class="model-title">Google Pixel 3 XL / 3</h2>
-        <span class="badge" style="background:#fef3c7; color:#b45309;">Camera King</span>
+        <div class="phone-title">Google Pixel 3 XL</div>
+        <div class="badges">
+          <span class="badge b-flag">Flagship</span>
+          <span class="badge b-spec">Clean Android</span>
+          <span class="badge b-spec">Top-Tier Camera</span>
+        </div>
       </div>
-      <span class="price-tag">රු. 38,000 / 35,000</span>
+      <div class="price-tag">රු. 38,000</div>
     </div>
-    <div class="specs-badge-row">
-      <span class="badge b-soc">Snapdragon 845</span>
-      <span class="badge b-mem">4GB RAM | 64GB ROM</span>
-      <span class="badge">1440p QHD+ OLED</span>
-      <span class="badge">3430 mAh (4G)</span>
+    
+    <div class="specs-grid">
+      <div class="spec-item"><span>Processor</span><strong>Snapdragon 845 (10nm)</strong></div>
+      <div class="spec-item"><span>Memory</span><strong>4GB RAM / 64GB ROM</strong></div>
+      <div class="spec-item"><span>Display</span><strong>6.3" QHD+ (1440p) OLED</strong></div>
+      <div class="spec-item"><span>Battery</span><strong>3430 mAh (Wireless Chg)</strong></div>
     </div>
 
-    <div class="section-label pros-label">✔ වාසි (Fully Detailed)</div>
-    <ul class="detail-list">
-      <li><strong>අසමසම Still Photography:</strong> Google Computational Photography නිසා Portrait, HDR සහ Night Sight ඡායාරූප අදටත් රු. 80,000 ෆෝන් වලට සමානය.</li>
-      <li><strong>Dual Selfie Cameras:</strong> ඉදිරිපස Ultra-wide කැමරාව නිසා පිරිසක් සමඟ ගන්නා Group selfies සුපිරිය.</li>
-      <li><strong>Clean Pixel UI:</strong> Bloodware නැති පිරිසිදු Stock Android අත්දැකීම.</li>
+    <div class="section-label sec-pro">🟢 ප්‍රධාන වාසි (Pros)</div>
+    <ul class="info-list list-pro">
+      <li><strong>මෙම පරාසයේ ඉහළම Camera Quality:</strong> Google Computational Photography නිසා Portrait සහ Night Sight ඡායාරූප අදටත් සුපිරිය.</li>
+      <li>1440p Quad HD+ පැහැදිලි තිරය සහ Front Dual Stereo Speakers.</li>
+      <li>Dual Selfie Cameras (Group selfies සඳහා Ultra-wide lens සහිතයි).</li>
     </ul>
 
-    <div class="section-label cons-label">✖ අවාසි</div>
-    <ul class="detail-list">
-      <li><strong>4GB RAM මදිවීම:</strong> 2024-2026 යුගයේ ඇප්ස් heavy වීම නිසා 4GB RAM එකෙන් ඇප්ස් මාරු වීමේදී reload වේ.</li>
-      <li><strong>විශාල Display Notch එක:</strong> 3 XL හි තිරය උඩින් ඉතා විශාල කැත Notch එකක් ඇත.</li>
-      <li><strong>බැටරි හා Storage සීමා:</strong> 64GB වලට වඩා Storage වැඩි කළ නොහැක (No SD card).</li>
+    <div class="section-label sec-con">🔴 ප්‍රධාන අවාසි (Cons)</div>
+    <ul class="info-list list-con">
+      <li><strong>4GB RAM සීමාව:</strong> Apps කිහිපයක් එකවර open කර තැබීමේදී background apps reload වේ (Aggressive RAM Management).</li>
+      <li>තිරයේ ඉහළ ඇති විශාල කැත Notch (Bathtub notch) එක.</li>
+      <li>SD Card සහ 3.5mm Jack පහසුකම් නොමැත.</li>
     </ul>
 
-    <div class="reddit-box">
-      <strong>⚠️ Reddit Users Complaints (r/GooglePixel):</strong>
-      • <em>EDL Mode / Brick Issue:</em> Pixel 3/3XL දුරකථන කිසිදු හේතුවක් නැතිව එකවරම ක්‍රියාවිරහිත වී Qualcomm EDL mode එකට යන බවට (Hard brick) ගෝලීය වශයෙන් විශාල පැමිණිල්ලක් ඇත.<br>
-      • <em>Battery Swelling (ඉදිමීම):</em> වසර 5කට වඩා පැරණි බැවින් Original battery එක පිම්බී back cover එක ගැලවී ඒමේ ප්‍රවණතාව වැඩිය.<br>
-      • <em>Camera Lag / App Slowdowns:</em> කැමරාව open වීමට තත්පර 4-6ක් ගතවීම සහ Digital Wellbeing නිසා UI lag වීම.
-    </div>
+    <div class="section-label sec-reddit">💬 Reddit User Complaints (r/GooglePixel)</div>
+    <ul class="info-list list-reddit">
+      <li><strong>RAM Management Issue:</strong> Camera app එක open කළ විට Spotify වැනි background apps crash වීම හෝ නැවත මුල සිට reload වීම.</li>
+      <li><strong>Battery Degradation:</strong> පරණ මාදිලියක් බැවින් Original battery එකෙන් පැය 3-4 කට වඩා SOT නොලැබීම.</li>
+      <li><strong>EDL / Motherboard Bricking:</strong> සමහර Pixel 3 උපාංග හදිසියේම Qualcomm CrashDump (EDL mode) එකට ගොස් dead වීම.</li>
+    </ul>
   </div>
 
-  <!-- DEVICE 5: SAMSUNG GALAXY A32 / A23 / A14 -->
-  <div class="device-card">
+  <!-- CARD 5: Samsung Galaxy A23 / A14 -->
+  <div class="card">
     <div class="card-header">
       <div>
-        <h2 class="model-title">Samsung Galaxy A Series (A32, A23, A14)</h2>
-        <span class="badge" style="background:#f1f5f9; color:#475569;">Reliable & Easy Parts</span>
+        <div class="phone-title">Samsung Galaxy A23 / A14</div>
+        <div class="badges">
+          <span class="badge b-spec">Budget Mid-Range</span>
+          <span class="badge b-spec">One UI Support</span>
+          <span class="badge b-spec">4G / 128GB</span>
+        </div>
       </div>
-      <span class="price-tag">රු. 35,000 - 39,000</span>
+      <div class="price-tag">රු. 39,000</div>
     </div>
-    <div class="specs-badge-row">
-      <span class="badge b-soc">Helio G80 / Snapdragon 680</span>
-      <span class="badge b-mem">4GB RAM | 64/128GB ROM</span>
-      <span class="badge">90Hz AMOLED / LCD</span>
-      <span class="badge">5000 mAh</span>
+    
+    <div class="specs-grid">
+      <div class="spec-item"><span>Processor</span><strong>Snapdragon 680 / Helio G80</strong></div>
+      <div class="spec-item"><span>Memory</span><strong>4GB RAM / 128GB ROM</strong></div>
+      <div class="spec-item"><span>Display</span><strong>6.6" PLS LCD (90Hz - A23)</strong></div>
+      <div class="spec-item"><span>Battery</span><strong>5000 mAh (25W Chg)</strong></div>
     </div>
 
-    <div class="section-label pros-label">✔ වාසි (Fully Detailed)</div>
-    <ul class="detail-list">
-      <li><strong>අමතර කොටස් බහුල බව:</strong> ලංකාවේ ඕනෑම කඩයකින් Display, Battery සහ Back cover අඩු මුදලට සොයාගත හැක. Resale value එක හොඳයි.</li>
-      <li><strong>One UI & 5000mAh Battery:</strong> පරිශීලක හිතකාමී Samsung One UI සහ මුළු දවසම පවතින බැටරිය.</li>
+    <div class="section-label sec-pro">🟢 ප්‍රධාන වාසි (Pros)</div>
+    <ul class="info-list list-pro">
+      <li>ලංකාවේ ඕනෑම තැනකින් Display, Battery වැනි <strong>අමතර කොටස් පහසුවෙන් අලුත්වැඩියා</strong> කරගත හැක.</li>
+      <li>Samsung One UI නිසා භාවිතය පහසු වීම සහ ආරක්ෂිත Knox Security.</li>
+      <li>5000mAh විශාල බැටරිය සාමාන්‍ය භාවිතයට දවසකට වඩා ඔරොත්තු දීම.</li>
     </ul>
 
-    <div class="section-label cons-label">✖ අවාසි</div>
-    <ul class="detail-list">
-      <li><strong>දුර්වල Performance:</strong> Flagship පරණ චිප් වලට වඩා මේවායේ Low-end Processors මන්දගාමීයි (Lags & Stutters).</li>
-      <li><strong>Camera සාමාන්‍යයි:</strong> Pixel හෝ Sony Flagship තරම් Video හෝ Low-light camera එක හොඳ නැත.</li>
+    <div class="section-label sec-con">🔴 ප්‍රධාන අවාසි (Cons)</div>
+    <ul class="info-list list-con">
+      <li><strong>දුර්වල Performance:</strong> Flagship හෝ 5G processors වලට සාපේක්ෂව Heavy Gaming හෝ Multitasking වලදී Lags සහ Stutter ඇතිවේ.</li>
+      <li>TFT/PLS LCD තිරයක් බැවින් OLED තරම් වර්ණවත් හා කළු ගැඹුර නැත.</li>
     </ul>
 
-    <div class="reddit-box">
-      <strong>⚠️ Reddit Users Complaints (r/GalaxyA):</strong>
-      • <em>UI Lag:</em> One UI animation drop වීම සහ Apps open වීමේදී සිරවීම.<br>
-      • <em>Ghost Touching:</em> Display එක heat වූ විට හෝ සාමාන්‍ය භාවිතයේදී screen එක තනිවම touch වීම.
-    </div>
+    <div class="section-label sec-reddit">💬 Reddit User Complaints (r/samsunggalaxy)</div>
+    <ul class="info-list list-reddit">
+      <li><strong>One UI Lag:</strong> 4GB RAM එක ප්‍රමාණවත් නොවීම නිසා app එකක් open වීමට පවා තත්පර 2-3 ක ප්‍රමාදයක් (Stutter) දැනීම.</li>
+      <li><strong>Poor Night Camera:</strong> අඩු ආලෝකයේදී ඡායාරූප වල noise වැඩි වීම සහ focus ප්‍රමාද වීම.</li>
+    </ul>
   </div>
 
-  <!-- FINAL VERDICT -->
-  <div class="verdict-box">
-    <h2>🏆 Overall Best Phone එක තෝරාගැනීමේ අවසන් තීරණය:</h2>
-    <p>ඔබගේ මුදලට (රු. 30,000 - 40,000) වඩාත්ම වාසිදායක හා ආරක්ෂිත තේරීම වන්නේ:</p>
-    <p>🥇 <strong>1 වන තේරීම: Sony Xperia 10 IV (රු. 36,000 - 38,000)</strong><br>
-    අවුරුදු 6-7ක් පරණ Flagship වලට නොගොස් 2022 නිපදවූ මෙය තෝරාගැනීමෙන්, දින 2ක් අදින <strong>5000mAh Battery</strong> එකක්, <strong>6nm 5G Processor</strong> එකක්, <strong>Gorilla Glass Victus</strong> සහ ජලයට ඔරොත්තු දෙන (IP68) තත්ත්වයක් ලැබේ. Reddit හි ඇති එකම ප්‍රධාන අඩුපාඩුව 60Hz screen එක හා RAM management ගැටලුවයි (එය සාමාන්‍ය පරිශීලකයෙකුට බරපතළ නොවේ).</p>
-    <p>🥈 <strong>2 වන තේරීම (Heavy Gaming & Storage අවශ්‍ය නම්): LG V50s ThinQ (8GB / 256GB)</strong><br>
-    ඔබට 256GB Storage සහ සුපිරි Flagship වේගය අවශ්‍ය නම් මේ මිලට ඇති එකම Beast එක මෙයයි. (ගන්නා විට Wi-Fi දමා Heat වී Shutdown වේදැයි විනාඩි 10ක් Test කර බලන්න).</p>
-  </div>
 </div>
 
 </body>
